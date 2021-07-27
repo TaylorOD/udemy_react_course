@@ -1,45 +1,54 @@
-console.log("app.js is running")
-
-// JSX - JavaScript XML
-var app = {
-  title: "Hello Friends",
-  subtitle: "Goodbye Friends"
+class Header extends React.Component {
+  render () {
+    return (
+      <div>
+        <h1>Indecision App</h1>
+        <h2>Put your life in the hands of the computer</h2>
+      </div>
+    )
+  }
 }
 
-var template = (
-  <div>
-    <h1> {app.title} </h1>
-    <p>{app.subtitle}</p>
-    <ol>
-      <li>Item One</li>
-      <li>Item Two</li>
-    </ol>
-  </div>
-)
-
-var userName = "Taylor Dorsett"
-var userAge = 29
-var userLocation = "Remote"
-
-var user = {
-  name: "Tyler Doorman",
-  age: 34,
-  location: "Nebraska"
+class Action extends React.Component {
+  render () {
+    return (
+      <div>
+        <button> What should I do? </button>
+      </div>
+    )
+  }
 }
 
+class Option extends React.Component {
+  render () {
+    return (
+      <div>
+        <p> Render Options Here </p>
+      </div>
+    )
+  }
+}
 
-var templateTwo = (
+class AddOption extends React.Component {
+  render () {
+    return (
+      <div>
+        <p> Add Options Here </p>
+      </div>
+    )
+  }
+}
+
+const jsx = (
+
   <div>
-  <h1>{userName.toUpperCase() + "!"}</h1>
-  <p>Age: {userAge}</p>
-  <p>Location: {userLocation}</p>
+    <h1>Title</h1>
+    <Header />
 
-  <h1>{user.name}</h1>
-  <p>Age: {user.age}</p>
-  <p>{user.location}</p>
+    <Action />
+    <Option />
+    <AddOption />
   </div>
-)
-var appRoot = document.getElementById("app")
+  )
 
-// ReactDOM.render(template, appRoot);
-ReactDOM.render(templateTwo, appRoot)
+ReactDOM.render(jsx, document.getElementById("app"))
