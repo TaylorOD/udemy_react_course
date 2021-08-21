@@ -106,4 +106,38 @@ class AddOption extends React.Component {
 //   </div>
 //   )
 
-ReactDOM.render(<IndecisionApp />, document.getElementById("app"))
+let count = 0
+const myIDHere = "my-plus-id"
+const add1 = () => {
+  console.log("addOne")
+}
+const resetFunction = () => {
+  console.log("Reset")
+}
+const multiplyBy2 = () => {
+  console.log("multiplied by 2")
+}
+const templateTwo = (
+  <div>
+    <h1>Count: {count}</h1>
+    <button
+      id="my-minus-id"
+      className="class"
+      onClick={() => {
+        console.log("minus-1")
+      }}
+    >
+      +1
+    </button>
+    <button id={myIDHere} className="class" onClick={add1}>
+      -1
+    </button>
+    <button onClick={multiplyBy2}>Multiply by 2</button>
+
+    <button onClick={resetFunction}>Reset</button>
+  </div>
+)
+console.log(templateTwo)
+
+ReactDOM.render(templateTwo, document.getElementById("app"))
+// Add whatever element you want to render to the .render function
