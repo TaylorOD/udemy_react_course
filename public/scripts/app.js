@@ -225,53 +225,90 @@ var AddOption = function (_React$Component6) {
 //   )
 
 var count = 0;
-var myIDHere = "my-plus-id";
+// const myIDHere = "my-plus-id"
 var add1 = function add1() {
-  console.log("addOne");
+  count = count + 1;
+  renderCounterApp();
+};
+var minusFunction = function minusFunction() {
+  count = count - 1;
+  // console.log("Reset")
+  renderCounterApp();
 };
 var resetFunction = function resetFunction() {
-  console.log("Reset");
+  count = 0;
+  // console.log("Reset")
+  renderCounterApp();
 };
 var multiplyBy2 = function multiplyBy2() {
-  console.log("multiplied by 2");
+  count = count * 2;
+  renderCounterApp();
 };
-var templateTwo = React.createElement(
-  "div",
-  null,
-  React.createElement(
-    "h1",
-    null,
-    "Count: ",
-    count
-  ),
-  React.createElement(
-    "button",
-    {
-      id: "my-minus-id",
-      className: "class",
-      onClick: function onClick() {
-        console.log("minus-1");
-      }
-    },
-    "+1"
-  ),
-  React.createElement(
-    "button",
-    { id: myIDHere, className: "class", onClick: add1 },
-    "-1"
-  ),
-  React.createElement(
-    "button",
-    { onClick: multiplyBy2 },
-    "Multiply by 2"
-  ),
-  React.createElement(
-    "button",
-    { onClick: resetFunction },
-    "Reset"
-  )
-);
-console.log(templateTwo);
+// const templateTwo = (
+//   <div>
+//     <h1>Count: {count}</h1>
+//     <button
+//       id="my-minus-id"
+//       className="class"
+//       onClick={() => {
+//         console.log("minus-1")
+//       }}
+//     >
+//       +1
+//     </button>
+//     <button id={myIDHere} className="class" onClick={add1}>
+//       -1
+//     </button>
+//     <button onClick={multiplyBy2}>Multiply by 2</button>
 
-ReactDOM.render(templateTwo, document.getElementById("app"));
+//     <button onClick={resetFunction}>Reset</button>
+//   </div>
+// )
+// console.log(templateTwo)
+
+// ReactDOM.render(templateTwo, document.getElementById("app"))
 // Add whatever element you want to render to the .render function
+
+var renderCounterApp = function renderCounterApp() {
+  var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      "Count: ",
+      count
+    ),
+    React.createElement(
+      "button",
+      {
+        // id="my-minus-id"
+        // className="class"
+        onClick: add1
+      },
+      "+1"
+    ),
+    React.createElement(
+      "button",
+      {
+        // id={myIDHere}
+        // className="class"
+        onClick: minusFunction
+      },
+      "-1"
+    ),
+    React.createElement(
+      "button",
+      { onClick: multiplyBy2 },
+      "Multiply by 2"
+    ),
+    React.createElement(
+      "button",
+      { onClick: resetFunction },
+      "Reset"
+    )
+  );
+  ReactDOM.render(templateTwo, document.getElementById("app"));
+};
+
+renderCounterApp();

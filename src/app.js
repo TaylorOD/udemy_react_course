@@ -107,37 +107,73 @@ class AddOption extends React.Component {
 //   )
 
 let count = 0
-const myIDHere = "my-plus-id"
+// const myIDHere = "my-plus-id"
 const add1 = () => {
-  console.log("addOne")
+  count = count + 1
+  renderCounterApp()
+}
+const minusFunction = () => {
+  count = count - 1
+  // console.log("Reset")
+  renderCounterApp()
 }
 const resetFunction = () => {
-  console.log("Reset")
+  count = 0
+  // console.log("Reset")
+  renderCounterApp()
 }
 const multiplyBy2 = () => {
-  console.log("multiplied by 2")
+  count = count * 2
+  renderCounterApp()
 }
-const templateTwo = (
-  <div>
-    <h1>Count: {count}</h1>
-    <button
-      id="my-minus-id"
-      className="class"
-      onClick={() => {
-        console.log("minus-1")
-      }}
-    >
-      +1
-    </button>
-    <button id={myIDHere} className="class" onClick={add1}>
-      -1
-    </button>
-    <button onClick={multiplyBy2}>Multiply by 2</button>
+// const templateTwo = (
+//   <div>
+//     <h1>Count: {count}</h1>
+//     <button
+//       id="my-minus-id"
+//       className="class"
+//       onClick={() => {
+//         console.log("minus-1")
+//       }}
+//     >
+//       +1
+//     </button>
+//     <button id={myIDHere} className="class" onClick={add1}>
+//       -1
+//     </button>
+//     <button onClick={multiplyBy2}>Multiply by 2</button>
 
-    <button onClick={resetFunction}>Reset</button>
-  </div>
-)
-console.log(templateTwo)
+//     <button onClick={resetFunction}>Reset</button>
+//   </div>
+// )
+// console.log(templateTwo)
 
-ReactDOM.render(templateTwo, document.getElementById("app"))
+// ReactDOM.render(templateTwo, document.getElementById("app"))
 // Add whatever element you want to render to the .render function
+
+const renderCounterApp = () => {
+  const templateTwo = (
+    <div>
+      <h1>Count: {count}</h1>
+      <button
+        // id="my-minus-id"
+        // className="class"
+        onClick={add1}
+      >
+        +1
+      </button>
+      <button
+        // id={myIDHere}
+        // className="class"
+        onClick={minusFunction}
+      >
+        -1
+      </button>
+      <button onClick={multiplyBy2}>Multiply by 2</button>
+      <button onClick={resetFunction}>Reset</button>
+    </div>
+  )
+  ReactDOM.render(templateTwo, document.getElementById("app"))
+}
+
+renderCounterApp()
