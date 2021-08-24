@@ -212,103 +212,83 @@ var AddOption = function (_React$Component6) {
   return AddOption;
 }(React.Component);
 
-// const jsx = (
-
-//   <div>
-//     <h1>Title</h1>
-//     <Header />
-
-//     <Action />
-//     <Option />
-//     <AddOption />
-//   </div>
-//   )
-
-var count = 0;
-// const myIDHere = "my-plus-id"
-var add1 = function add1() {
-  count = count + 1;
-  renderCounterApp();
+var appRoot = document.getElementById("app");
+var app = {
+  title: "Indecision App",
+  subtitle: "Put your life in the hands of a computer",
+  options: []
 };
-var minusFunction = function minusFunction() {
-  count = count - 1;
-  // console.log("Reset")
-  renderCounterApp();
-};
-var resetFunction = function resetFunction() {
-  count = 0;
-  // console.log("Reset")
-  renderCounterApp();
-};
-var multiplyBy2 = function multiplyBy2() {
-  count = count * 2;
-  renderCounterApp();
-};
-// const templateTwo = (
-//   <div>
-//     <h1>Count: {count}</h1>
-//     <button
-//       id="my-minus-id"
-//       className="class"
-//       onClick={() => {
-//         console.log("minus-1")
-//       }}
-//     >
-//       +1
-//     </button>
-//     <button id={myIDHere} className="class" onClick={add1}>
-//       -1
-//     </button>
-//     <button onClick={multiplyBy2}>Multiply by 2</button>
 
-//     <button onClick={resetFunction}>Reset</button>
-//   </div>
-// )
-// console.log(templateTwo)
+var onFormSubmit = function onFormSubmit(event) {
+  event.preventDefault();
+  var option = event.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    event.target.elements.option.value = "";
+    renderTemplate();
+  }
+};
 
-// ReactDOM.render(templateTwo, document.getElementById("app"))
-// Add whatever element you want to render to the .render function
+var resetOptions = function resetOptions() {
+  options = [];
+  renderTemplate();
+};
 
-var renderCounterApp = function renderCounterApp() {
-  var templateTwo = React.createElement(
+var renderTemplate = function renderTemplate() {
+  var template = React.createElement(
     "div",
     null,
     React.createElement(
       "h1",
       null,
-      "Count: ",
-      count
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      "p",
+      null,
+      app.subtitle
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length > 0 ? "Here are your options" : "No options"
+    ),
+    React.createElement(
+      "p",
+      null,
+      app.options.length
     ),
     React.createElement(
       "button",
-      {
-        // id="my-minus-id"
-        // className="class"
-        onClick: add1
-      },
-      "+1"
+      { onClick: resetOptions },
+      "Reset Options"
     ),
     React.createElement(
-      "button",
-      {
-        // id={myIDHere}
-        // className="class"
-        onClick: minusFunction
-      },
-      "-1"
+      "ol",
+      null,
+      React.createElement(
+        "li",
+        null,
+        "Item one"
+      ),
+      React.createElement(
+        "li",
+        null,
+        "Item two"
+      )
     ),
     React.createElement(
-      "button",
-      { onClick: multiplyBy2 },
-      "Multiply by 2"
-    ),
-    React.createElement(
-      "button",
-      { onClick: resetFunction },
-      "Reset"
+      "form",
+      { onSubmit: onFormSubmit },
+      React.createElement("input", { type: "text", name: "option" }),
+      React.createElement(
+        "button",
+        null,
+        "Add Option"
+      )
     )
   );
-  ReactDOM.render(templateTwo, document.getElementById("app"));
+  ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+renderTemplate();

@@ -93,87 +93,47 @@ class AddOption extends React.Component {
     )
   }
 }
-
-// const jsx = (
-
-//   <div>
-//     <h1>Title</h1>
-//     <Header />
-
-//     <Action />
-//     <Option />
-//     <AddOption />
-//   </div>
-//   )
-
-let count = 0
-// const myIDHere = "my-plus-id"
-const add1 = () => {
-  count = count + 1
-  renderCounterApp()
+let appRoot = document.getElementById("app")
+var app = {
+  title: "Indecision App",
+  subtitle: "Put your life in the hands of a computer",
+  options: [],
 }
-const minusFunction = () => {
-  count = count - 1
-  // console.log("Reset")
-  renderCounterApp()
-}
-const resetFunction = () => {
-  count = 0
-  // console.log("Reset")
-  renderCounterApp()
-}
-const multiplyBy2 = () => {
-  count = count * 2
-  renderCounterApp()
-}
-// const templateTwo = (
-//   <div>
-//     <h1>Count: {count}</h1>
-//     <button
-//       id="my-minus-id"
-//       className="class"
-//       onClick={() => {
-//         console.log("minus-1")
-//       }}
-//     >
-//       +1
-//     </button>
-//     <button id={myIDHere} className="class" onClick={add1}>
-//       -1
-//     </button>
-//     <button onClick={multiplyBy2}>Multiply by 2</button>
 
-//     <button onClick={resetFunction}>Reset</button>
-//   </div>
-// )
-// console.log(templateTwo)
+const onFormSubmit = (event) => {
+  event.preventDefault();
+  const option = event.target.elements.option.value
+  if (option) {
+    app.options.push(option)
+    event.target.elements.option.value = ""
+    renderTemplate()
+  }
+}
 
-// ReactDOM.render(templateTwo, document.getElementById("app"))
-// Add whatever element you want to render to the .render function
+const resetOptions = () => {
+  options = []
+  renderTemplate()
+}
 
-const renderCounterApp = () => {
-  const templateTwo = (
+const renderTemplate = () => {
+  var template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button
-        // id="my-minus-id"
-        // className="class"
-        onClick={add1}
-      >
-        +1
-      </button>
-      <button
-        // id={myIDHere}
-        // className="class"
-        onClick={minusFunction}
-      >
-        -1
-      </button>
-      <button onClick={multiplyBy2}>Multiply by 2</button>
-      <button onClick={resetFunction}>Reset</button>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
+      <p>{app.options.length}</p>
+      <button onClick={resetOptions}>Reset Options</button>
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
     </div>
   )
-  ReactDOM.render(templateTwo, document.getElementById("app"))
+  ReactDOM.render(template, appRoot)
 }
 
-renderCounterApp()
+renderTemplate()
