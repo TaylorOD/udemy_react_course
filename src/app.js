@@ -111,7 +111,7 @@ const onFormSubmit = (event) => {
 }
 
 const resetOptions = () => {
-  options = []
+  app.options = []
   renderTemplate()
 }
 

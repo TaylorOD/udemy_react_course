@@ -230,7 +230,7 @@ var onFormSubmit = function onFormSubmit(event) {
 };
 
 var resetOptions = function resetOptions() {
-  options = [];
+  app.options = [];
   renderTemplate();
 };
 
