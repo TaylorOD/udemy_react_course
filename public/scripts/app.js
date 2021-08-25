@@ -234,6 +234,8 @@ var resetOptions = function resetOptions() {
   renderTemplate();
 };
 
+var numbers = [55, 100, 1200];
+
 var renderTemplate = function renderTemplate() {
   var template = React.createElement(
     "div",
@@ -263,19 +265,24 @@ var renderTemplate = function renderTemplate() {
       { onClick: resetOptions },
       "Reset Options"
     ),
+    numbers.map(function (number) {
+      return React.createElement(
+        "p",
+        { key: number },
+        "Number: ",
+        number
+      );
+    }),
     React.createElement(
       "ol",
       null,
-      React.createElement(
-        "li",
-        null,
-        "Item one"
-      ),
-      React.createElement(
-        "li",
-        null,
-        "Item two"
-      )
+      app.options.map(function (item) {
+        return React.createElement(
+          "li",
+          { key: item },
+          item
+        );
+      })
     ),
     React.createElement(
       "form",

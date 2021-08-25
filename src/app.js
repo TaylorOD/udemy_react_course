@@ -115,6 +115,8 @@ const resetOptions = () => {
   renderTemplate()
 }
 
+const numbers = [55, 100, 1200]
+
 const renderTemplate = () => {
   var template = (
     <div>
@@ -123,9 +125,18 @@ const renderTemplate = () => {
       <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
       <p>{app.options.length}</p>
       <button onClick={resetOptions}>Reset Options</button>
+      {
+        numbers.map((number) => {
+          return <p key={number}>Number: {number}</p>
+        })
+      }
       <ol>
-        <li>Item one</li>
-        <li>Item two</li>
+      {
+        app.options.map((item) => {
+          return <li key={item}>{item}</li>
+        })
+      }
+
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
