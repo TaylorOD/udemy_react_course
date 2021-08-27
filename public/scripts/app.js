@@ -234,6 +234,12 @@ var resetOptions = function resetOptions() {
   renderTemplate();
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var randomNumber = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNumber];
+  alert(option);
+};
+
 var numbers = [55, 100, 1200];
 
 var renderTemplate = function renderTemplate() {
@@ -259,6 +265,11 @@ var renderTemplate = function renderTemplate() {
       "p",
       null,
       app.options.length
+    ),
+    React.createElement(
+      "button",
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      " What should I do?"
     ),
     React.createElement(
       "button",

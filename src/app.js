@@ -115,6 +115,13 @@ const resetOptions = () => {
   renderTemplate()
 }
 
+const onMakeDecision = () => {
+  const randomNumber = Math.floor(Math.random() * app.options.length)
+  const option = app.options[randomNumber]
+  alert(option)
+}
+
+
 const numbers = [55, 100, 1200]
 
 const renderTemplate = () => {
@@ -124,6 +131,8 @@ const renderTemplate = () => {
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
       <p>{app.options.length}</p>
+
+      <button disabled={app.options.length === 0} onClick={onMakeDecision}> What should I do?</button>
       <button onClick={resetOptions}>Reset Options</button>
       {
         numbers.map((number) => {
