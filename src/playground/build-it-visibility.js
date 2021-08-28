@@ -1,5 +1,3 @@
-"use strict";
-
 // visibility toggle text
 // Button - when clicked shows something and changes to/from hide text to show text
 // Button shows text or removes text when clicked
@@ -14,63 +12,50 @@ var app = {
   title: "Visibility Toggle",
   someText: "",
   buttonText: "Show Text"
+}
 
-  // let visibility = false
+// let visibility = false
 
-};var appRoot = document.getElementById("app");
+let appRoot = document.getElementById("app")
 
-var toggleText = function toggleText() {
+const toggleText = () => {
   if (app.someText.length <= 0) {
-    app.someText = "Here is some text!";
+    app.someText = "Here is some text!"
   } else {
-    app.someText = "";
+    app.someText = ""
   }
-  toggleButtonText();
-  visibilityToggle();
-  visibility = !visibility;
-};
-var toggleButtonText = function toggleButtonText() {
+  toggleButtonText()
+  visibilityToggle()
+  visibility = !visibility
+}
+const toggleButtonText = () => {
   if (app.buttonText === "Show Text") {
-    app.buttonText = "Hide Text";
+    app.buttonText = "Hide Text"
   } else {
-    app.buttonText = "Show Text";
+    app.buttonText = "Show Text"
   }
-};
+}
 
-var visibilityToggle = function visibilityToggle() {
-  var visibilityHTML = React.createElement(
-    "div",
-    null,
-    React.createElement(
-      "h1",
-      null,
-      app.title
-    ),
-    React.createElement(
-      "button",
-      { onClick: toggleText },
-      app.buttonText,
-      visibility ? "Hide Text" : "Show Text"
-    ),
-    app.someText && React.createElement(
-      "p",
-      null,
-      app.someText
-    ),
-    visibility && React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "p",
-        null,
-        " Here is some text! "
-      )
-    )
-  );
-  ReactDOM.render(visibilityHTML, appRoot);
-};
+const visibilityToggle = () => {
+  var visibilityHTML = (
+    <div>
+      <h1>{app.title}</h1>
 
-visibilityToggle();
+      <button onClick={toggleText}>{app.buttonText}
+      {visibility ? "Hide Text" : "Show Text"}
+      </button>
+      {app.someText && <p>{app.someText}</p>}
+      {visibility && (
+        <div>
+          <p> Here is some text! </p>
+        </div>
+      )}
+    </div>
+  )
+  ReactDOM.render(visibilityHTML, appRoot)
+}
+
+visibilityToggle()
 
 // Another way:
 
