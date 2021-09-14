@@ -5,7 +5,7 @@ class Counter extends React.Component {
     this.handleRemoveOne = this.handleRemoveOne.bind(this)
     this.handleReset = this.handleReset.bind(this)
     this.state = {
-      count: 0
+      count: props.count
     }
   }
   handleAddOne() {
@@ -33,7 +33,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <h1>Counter:</h1>
+        <h1>Counter: {this.state.count}</h1>
         <button onClick={this.handleAddOne}>+1</button>
         <button onClick={this.handleRemoveOne}>-1</button>
         <button onClick={this.handleReset}>Reset</button>
@@ -41,8 +41,11 @@ class Counter extends React.Component {
     )
   }
 }
+Counter.defaultProps = {
+  count: 0,
+}
 
-reactDom.render(<Counter />, document.getElementById("#app"))
+ReactDOM.render(<Counter count={5}/>, document.getElementById("app"))
 
 // let count = 0
 // // const myIDHere = "my-plus-id"
